@@ -1,0 +1,23 @@
+Workflow configuration
+======================
+
+Configuration for the workflow, which cares about modification in repeated
+events on post publish.
+
+1) Go in the admin overview to Setup -> Workflows
+
+2) Create a new workflow "Event parent processing" (or similar), which
+   contains the workflow type "Event/Merge event attributes".
+
+3) Configure the post publish multiplexer to include that workflow the the
+   following parameters:
+
+       Sections: Any
+	   Classes to run workflow: Event
+	   Users without workflow IDs:
+	   Workflow to run: Event parent processing
+	   Language: Any
+	   Affected versions: Updating existing object
+
+4) Be happy.
+

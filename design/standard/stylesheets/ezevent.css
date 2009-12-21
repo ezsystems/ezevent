@@ -1,0 +1,58 @@
+div#ezeventattribute_attendees
+{
+    width: 100%;
+    padding: 0.3em;
+}
+
+div#ezeventattribute_selection
+{
+    margin-right: 1.5em;
+}
+
+div.edit-attribute input.event_type_selection
+{
+    width: auto;
+    display: inline;
+}
+
+div.edit-attribute input.search-button
+{
+    width: 20px;
+    height: 20px;
+}
+
+.float-break
+{
+    height: 1%; /* Fix for IE */
+}
+
+.float-break:after /* Terminate floating elements flow */
+{
+    content: "-";
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+table.ezevent_structural_table td {
+    vertical-align: top;
+}
+
+#ezeventattribute_attendees {
+    width: 162px;
+    border: 1px solid #666;
+    padding: 1px;
+    margin-right: -10px;
+}
+
+#ezeventattribute_attendees ul {
+    margin-left: 0px;
+    padding-left: 13px;
+}
+
+#ezeventattribute_attendees ul li img{
+    border: 0px;
+    margin-left: 2px;
+    margin-bottom: -2px;
+}
