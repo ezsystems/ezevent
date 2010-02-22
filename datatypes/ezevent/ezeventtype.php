@@ -23,6 +23,8 @@
 //
 //
 
+require_once( 'kernel/common/i18n.php' );
+
 class eZEventType extends eZDataType
 {
     const DATA_TYPE_STRING          = 'ezevent';
