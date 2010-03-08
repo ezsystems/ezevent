@@ -406,9 +406,9 @@ class eZEvent extends eZPersistentObject
      * Calculate the next event date
      *
      * Calculated the next date of the event based on the repetition type.
-     * 
-     * @param int $date 
-     * @param int $type 
+     *
+     * @param int $date
+     * @param int $type
      * @return int
      */
     protected static function calculateNextDate( $date, $type, $counter = 1 )
@@ -431,22 +431,22 @@ class eZEvent extends eZPersistentObject
 
     /**
      * Apply repetition to events
-     * 
+     *
      * Events with a repetition setting (every week, every month, .. ) are
      * dublicated by this method in the specified time span. This method will
      * increase the number of return values by the original SQL array this way.
      *
-     * @param array $sqlResults 
+     * @param array $sqlResults
      * @return array
      */
     protected static function applyRepetitionInMonth( array $sqlResults, $year, $month, $day = 0 )
     {
-        $startDate = mktime( 
+        $startDate = mktime(
             1, 0, 0,
             $month, $day+1, $year
         );
-        $endDate   = mktime( 
-            1, 0, 0, 
+        $endDate   = mktime(
+            1, 0, 0,
             $month,
             // If a day has been specified use 1:00 at the next day, otherwise
             // fall back to the last day in month.
@@ -461,21 +461,21 @@ class eZEvent extends eZPersistentObject
         foreach ( $sqlResults as $row )
         {
             $counter = 1;
-            $origDate = $row['start'];
+            $origDate = $row['start_date'];
             // Increase date, until we are in the requested time span
             while ( in_array( $row['event_type'], array(
                         self::EVENTTYPE_WEEKLY_REPEAT,
                         self::EVENTTYPE_MONTHLY_REPEAT,
                         self::EVENTTYPE_YEARLY_REPEAT,
                     ) ) &&
-                    ( $row['start'] < $startDate ) )
+                    ( $row['start_date'] < $startDate ) )
             {
                 $tmpDate = self::calculateNextDate( $origDate, $row['event_type'], $counter++ );
-                if ( ( ( $row['event_type'] == self::EVENTTYPE_MONTHLY_REPEAT ) && 
-                       ( date( "d", $row['start'] ) == date( "d", $tmpDate ) ) ) ||
+                if ( ( ( $row['event_type'] == self::EVENTTYPE_MONTHLY_REPEAT ) &&
+                       ( date( "d", $row['start_date'] ) == date( "d", $tmpDate ) ) ) ||
                      ( $row['event_type'] != self::EVENTTYPE_MONTHLY_REPEAT ) )
                 {
-                    $row['start'] = $tmpDate;
+                    $row['start_date'] = $tmpDate;
                 }
                 else
                 {
@@ -487,24 +487,24 @@ class eZEvent extends eZPersistentObject
             $before = 0;
             do {
                 if ( ( $row['event_type'] != self::EVENTTYPE_MONTHLY_REPEAT ) ||
-                     ( ( date( "n", $row['start'] ) == $month ) &&
-                       ( date( "Y", $row['start'] ) == $year ) &&
+                     ( ( date( "n", $row['start_date'] ) == $month ) &&
+                       ( date( "Y", $row['start_date'] ) == $year ) &&
                        ( $before != 0 ) &&
                        ( $row['event_type'] == self::EVENTTYPE_MONTHLY_REPEAT ) &&
-                       ( date( "d", $row['start'] ) == date( "d", $before ) ) ) || 
-                     ( ( date( "n", $row['start'] ) == $month ) && 
-                       ( date( "Y", $row['start'] ) == $year ) &&
+                       ( date( "d", $row['start_date'] ) == date( "d", $before ) ) ) ||
+                     ( ( date( "n", $row['start_date'] ) == $month ) &&
+                       ( date( "Y", $row['start_date'] ) == $year ) &&
                        ( $before == 0 ) &&
                        ( $row['event_type'] == self::EVENTTYPE_MONTHLY_REPEAT ) ) )
                 {
                     $events[]     = $row;
-                    $searchKeys[] = $row['start'];
+                    $searchKeys[] = $row['start_date'];
                 }
 
-                $row['start'] = self::calculateNextDate( $before = $origDate, $row['event_type'], $counter++ );
-            } while ( ( $row['start'] < $endDate ) &&
-                      ( $row['start'] < $row['end'] ) &&
-                      ( $row['start'] != $before ) );
+                $row['start_date'] = self::calculateNextDate( $before = $origDate, $row['event_type'], $counter++ );
+            } while ( ( $row['start_date'] < $endDate ) &&
+                      ( $row['start_date'] < $row['end_date'] ) &&
+                      ( $row['start_date'] != $before ) );
         }
 
         // Search events again depending on their start date
@@ -1133,12 +1133,12 @@ class eZEvent extends eZPersistentObject
                 {
                     $object = eZContentObject::fetch( (int) $item['id'], false );
                     $object = new eZContentObject( $object );
-                    $object->startDate = $item['start'];
+                    $object->startDate = $item['start_date'];
                     if ( $object && $object->attribute( 'can_read' ) )
                     {
                         if ( $group )
                         {
-                            $currentDay = date('j', $item['start'] );
+                            $currentDay = date('j', $item['start_date'] );
                             $result[$currentDay][] = $object;
                         }
                         else
@@ -1155,10 +1155,10 @@ class eZEvent extends eZPersistentObject
                 foreach( $sqlResult as $item )
                 {
                     $event = eZEvent::fetch( $item['event_id'] );
-                    $event->startDate = $item['start'];
+                    $event->startDate = $item['start_date'];
                     if ( $group )
                     {
-                        $currentDay = date('j', $item['start'] );
+                        $currentDay = date('j', $item['start_date'] );
                         $result[$currentDay][] = $event;
                     }
                     else
@@ -1173,7 +1173,7 @@ class eZEvent extends eZPersistentObject
                 {
                     if ( $group )
                     {
-                        $currentDay = date('j', $item['start'] ) . ".".$month;
+                        $currentDay = date('j', $item['start_date'] ) . ".".$month;
                         $result[$currentDay][] = $item;
                     }
                     else
@@ -1259,23 +1259,39 @@ class eZEvent extends eZPersistentObject
 
         if ( $getCount )
         {
-            $select = "SELECT count( ezevent.event_id ) as cnt\n";
+            $select = "SELECT count( ezevent.event_id ) cnt\n";
         }
         else
         {
-            $select = "SELECT ezcontentobject.id $versionNameTargets, ezcontentobject_tree.node_id, ezevent.id as event_id, ezevent.start_date as start, ezevent.end_date as end, ezevent.event_type as event_type\n";
-//            $select = "SELECT ezcontentobject.*, ezevent.id as event_id, ezevent.start_date as start, ezevent.end_date as end, ezevent.event_type as event_type\n";
+            $select = "SELECT ezcontentobject.id $versionNameTargets, ezcontentobject_tree.node_id, ezevent.id event_id, ezevent.start_date start_date, ezevent.end_date end_date, ezevent.event_type event_type\n";
+//            $select = "SELECT ezcontentobject.*, ezevent.id event_id, ezevent.start_date start_date, ezevent.end_date end_date, ezevent.event_type event_type\n";
         }
 
         if ( $day != 0 )
         {
             $queryWeekday    = " AND WEEKDAY(FROM_UNIXTIME(ezevent.start_date)) = $weekDay ";
             $queryDayOfMonth = " AND DAYOFMONTH(FROM_UNIXTIME(ezevent.start_date)) = $dayOfMonth ";
+            if ( $db->databaseName() == 'oracle' )
+            {
+                $queryWeekday    = " AND TO_CHAR( TO_DATE( '19700101000000','YYYYMMDDHH24MISS' ) + NUMTODSINTERVAL( ezevent.start_date, 'SECOND' ), 'D' ) = $weekDay ";
+                $queryDayOfMonth = " AND TO_CHAR( TO_DATE( '19700101000000','YYYYMMDDHH24MISS' ) + NUMTODSINTERVAL( ezevent.start_date, 'SECOND' ), 'DD') = $dayOfMonth ";
+            }
         }
         else
         {
             $queryWeekday = " ";
             $queryDayOfMonth = " ";
+        }
+
+        $queryMonthOfYear = " AND MONTH(FROM_UNIXTIME(ezevent.start_date)) = $monthOfYear ";
+        if ( $db->databaseName() == 'oracle' )
+        {
+            $queryYear = $monthOfYear;
+            if ( $monthOfYear < 10 )
+            {
+                $queryYear = "0$monthOfYear";
+            }
+            $queryMonthOfYear = " AND TO_CHAR( TO_DATE( '19700101000000','YYYYMMDDHH24MISS' ) + NUMTODSINTERVAL( ezevent.start_date, 'SECOND' ), 'mm') = $queryYear";
         }
 
         $subtreeLikeStatements = '';
@@ -1354,7 +1370,7 @@ class eZEvent extends eZPersistentObject
                         AND ezevent.start_date <= $endDate AND (  ezevent.end_date = 0 OR  ( ezevent.end_date != 0 AND ezevent.end_date >= $startDate ) )
                     )
                     OR
-                    ( ezevent.event_type = 17 $queryDayOfMonth AND MONTH(FROM_UNIXTIME(ezevent.start_date)) = $monthOfYear
+                    ( ezevent.event_type = 17 $queryDayOfMonth $queryMonthOfYear
                         AND ezevent.start_date <= $endDate AND (  ezevent.end_date = 0 OR  ( ezevent.end_date != 0 AND ezevent.end_date >= $startDate ) )
                     )
                 )
@@ -1784,7 +1800,7 @@ class eZEvent extends eZPersistentObject
 
         if ( $useVersionName )
         {
-            $versionNameTargets = ', ezcontentobject_name.name as name,  ezcontentobject_name.real_translation ';
+            $versionNameTargets = ', ezcontentobject_name.name name,  ezcontentobject_name.real_translation ';
         }
 
 

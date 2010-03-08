@@ -137,23 +137,19 @@
 </div>
 
 <div id="ezagenda_calendar_today">
-    {if eq($curr_ts|datetime( custom, '%j'),$temp_ts|datetime( custom, '%j'))} 
-        <h2>{"Today"|i18n("design/ezwebin/full/event_view_calendar")}:</h2> 
-    {else} 
-        <h2>{$temp_ts|datetime( custom, '%l %j')|upfirst()}:</h2> 
-    {/if} 
+    {if eq($curr_ts|datetime( custom, '%j'),$temp_ts|datetime( custom, '%j'))}
+        <h2>{"Today"|i18n("design/ezwebin/full/event_view_calendar")}:</h2>
+    {else}
+        <h2>{$temp_ts|datetime( custom, '%l %j')|upfirst()}:</h2>
+    {/if}
 {foreach $day_events as $day_event}
     <div class="{*ezagenda_day_event{if gt($curr_ts , $day_event.data_map.event_time.content.timestamp)} ezagenda_event_old{/if}*}">
     <h4><a href={$day_event.main_node.url_alias|ezurl}>{$day_event.name|wash}</a></h4>
     <p>
-{*     {if $day_event.data_map.category.has_content} *}
     <span class="ezagenda_keyword">
     {"Category"|i18n("design/ezwebin/full/event_view_calendar")}:
-{*     {attribute_view_gui attribute=$day_event.data_map.category} *}
     </span>
-{*     {/if} *}
     <span class="ezagenda_date">
-{*     {attribute_view_gui attribute=$day_event.data_map.event_time} *}
     </span>
     </p>
     </div>
@@ -163,10 +159,9 @@
 
 
 <div id="ezagenda_calendar_right">
-<h2>{$temp_ts|datetime( custom, '%F %Y' )|upfirst()}:</h2> 
+<h2>{$temp_ts|datetime( custom, '%F %Y' )|upfirst()}:</h2>
 {foreach $events as $day => $daily_list}
 {foreach $daily_list as $event}
-{* <pre>{$event.data_map.event_time.content.timestamp}</pre> *}
     {if and( ne($view_parameters.offset, 2), eq($loop_count, 8))}
         <a id="ezagenda_month_hidden_show" href={$url_reload|ezurl} onclick="document.getElementById('ezagenda_month_hidden').style.display='';this.style.display='none';return false;">Show All Events..</a>
         <div id="ezagenda_month_hidden" style="display:none;">
@@ -176,7 +171,6 @@
     <td class="ezagenda_month_label">
         <h2>
         <span class="ezagenda_month_label_date">{$day}</span>
-{*         {$event.data_map.event_time.content.start.timestamp|datetime(custom,"%M")|extract_left( 3 )} *}
         </h2>
     </td>
     <td class="ezagenda_month_info">
@@ -185,19 +179,11 @@
 
     <p>
     <span class="ezagenda_date">
-{*     {attribute_view_gui attribute=$event.data_map.event_time} *}
     </span>
 
-{*     {if $event.data_map.category.has_content} *}
     <span class="ezagenda_keyword">
-{*     {attribute_view_gui attribute=$event.data_map.category} *}
     </span>
-{*     {/if} *}
     </p>
-
-{*     {if $event.data_map.text.has_content} *}
-{*         <div class="attribute-short">{attribute_view_gui attribute=$event.data_map.text}</div> *}
-{*     {/if} *}
 
     </td>
     </tr>

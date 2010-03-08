@@ -1,0 +1,8 @@
+JavaScript files
+----------------
+
+Make sure the required javascript files are loaded. To do
+so either just remove the comments from the JavaScriptList[]
+settings in settings/design.ini.append.php or make sure that
+the referenced files are included in another way into your
+installation.
