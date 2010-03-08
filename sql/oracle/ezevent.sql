@@ -22,3 +22,5 @@ END;
 
 CREATE INDEX ezevent_coaid_version ON ezevent ( contentobject_attribute_id, version );
 CREATE INDEX ezevent_parent_event_id ON ezevent ( parent_event_id );
+
+

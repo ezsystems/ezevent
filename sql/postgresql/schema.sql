@@ -16,3 +16,5 @@ CREATE INDEX contentobject_attribute_id ON ezevent (
 
 CREATE INDEX parent_event_id ON ezevent (
       parent_event_id);
+
+

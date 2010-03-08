@@ -12,3 +12,5 @@ CREATE TABLE ezevent (
   KEY contentobject_attribute_id (contentobject_attribute_id,version),
   KEY parent_event_id (parent_event_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
