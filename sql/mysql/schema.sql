@@ -5,12 +5,11 @@ CREATE TABLE ezevent (
   version int(11) NOT NULL,
   start_date int(11) NOT NULL,
   end_date int(11) NOT NULL,
-  event_type tinyint(4) NOT NULL DEFAULT '14',
-  is_parent tinyint(4) NOT NULL DEFAULT '0',
-  is_temp tinyint(4) NOT NULL DEFAULT '0',
+  event_type int(4) NOT NULL DEFAULT '14',
+  is_parent int(4) NOT NULL DEFAULT '0',
+  is_temp int(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (id,contentobject_attribute_id,version),
   KEY contentobject_attribute_id (contentobject_attribute_id,version),
   KEY parent_event_id (parent_event_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
