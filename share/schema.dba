@@ -1,0 +1,115 @@
+<?php
+// This array contains the database schema
+$schema = array (
+  'ezevent' => 
+  array (
+    'name' => 'ezevent',
+    'fields' => 
+    array (
+      'contentobject_attribute_id' => 
+      array (
+        'length' => 11,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'end_date' => 
+      array (
+        'length' => 11,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'event_type' => 
+      array (
+        'length' => 4,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 14,
+      ),
+      'id' => 
+      array (
+        'type' => 'auto_increment',
+        'default' => false,
+      ),
+      'is_parent' => 
+      array (
+        'length' => 4,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'is_temp' => 
+      array (
+        'length' => 4,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'parent_event_id' => 
+      array (
+        'length' => 11,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'start_date' => 
+      array (
+        'length' => 11,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+      'version' => 
+      array (
+        'length' => 11,
+        'type' => 'int',
+        'not_null' => '1',
+        'default' => 0,
+      ),
+    ),
+    'indexes' => 
+    array (
+      'PRIMARY' => 
+      array (
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+          1 => 'contentobject_attribute_id',
+          2 => 'version',
+        ),
+      ),
+      'contentobject_attribute_id' => 
+      array (
+        'type' => 'non-unique',
+        'fields' => 
+        array (
+          0 => 'contentobject_attribute_id',
+          1 => 'version',
+        ),
+      ),
+      'parent_event_id' => 
+      array (
+        'type' => 'non-unique',
+        'fields' => 
+        array (
+          0 => 'parent_event_id',
+        ),
+      ),
+    ),
+  ),
+  '_info' => 
+  array (
+    'format' => 'generic',
+  ),
+);
+// This array contains the database data
+$data = array (
+  '_info' => 
+  array (
+    'format' => 'generic',
+  ),
+);
+
+?>
