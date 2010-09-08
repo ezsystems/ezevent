@@ -457,7 +457,7 @@ class eZEventType extends eZDataType
      */
     function fromString( $contentObjectAttribute, $string )
     {
-        list( $startDate, $endDate, $eventType ) = explode( "|", $string, 3 );
+        list( $eventType, $startDate, $endDate  ) = explode( "|", $string, 3 );
         $data = array(
             'contentobject_attribute_id' => $contentObjectAttribute->attribute( 'id' ),
             'version'                    => $contentObjectAttribute->attribute( 'version' ),
