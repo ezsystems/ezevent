@@ -23,10 +23,6 @@
 //
 //
 
-require_once( 'kernel/common/i18n.php' );
-
-require_once 'kernel/common/i18n.php';
-
 class eZEventType extends eZDataType
 {
     const DATA_TYPE_STRING          = 'ezevent';
@@ -42,7 +38,7 @@ class eZEventType extends eZDataType
     {
         $this->eZDataType(
             self::DATA_TYPE_STRING,
-            ezi18n( 'ezevent/datatypes', "Event", 'Datatype name' ),
+            ezpI18n::tr( 'ezevent/datatypes', "Event", 'Datatype name' ),
             array(
                 'serialize_supported' => true
             )
