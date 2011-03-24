@@ -2,236 +2,216 @@
 <context>
     <name>design/ezevent/content/datatype</name>
     <message>
-        <source>You are editing a single date of the recurent event &quot;%name&quot;&lt;br /&gt;(period from %start to %end)</source>
-        <translation type="obsolete">Sie bearbeiten einen Einzeltermin des wiederholenden Termins &quot;%name&quot;&lt;br /&gt;(Zeitraum von %start bis %end)</translation>
-    </message>
-    <message>
-        <source>Select type</source>
-        <translation>Typ auswählen</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation>Normal</translation>
-    </message>
-    <message>
-        <source>Full Day</source>
-        <translation>Ganzer Tag</translation>
-    </message>
-    <message>
-        <source>Weekly</source>
-        <translation>Wöchentlich</translation>
-    </message>
-    <message>
-        <source>Monthly</source>
-        <translation>Monatlich</translation>
-    </message>
-    <message>
-        <source>Yearly</source>
-        <translation>Jährlich</translation>
-    </message>
-    <message>
-        <source>Startdate</source>
-        <translation type="obsolete">Startdatum</translation>
-    </message>
-    <message>
-        <source>Year</source>
-        <translation>Jahr</translation>
-    </message>
-    <message>
-        <source>Month</source>
-        <translation>Monat</translation>
-    </message>
-    <message>
-        <source>Day</source>
-        <translation>Tag</translation>
-    </message>
-    <message>
-        <source>Starttime</source>
-        <translation type="obsolete">Startzeit</translation>
-    </message>
-    <message>
-        <source>Hour</source>
-        <translation>Stunde</translation>
-    </message>
-    <message>
-        <source>Minute</source>
-        <translation>Minute</translation>
-    </message>
-    <message>
-        <source>Enddate</source>
-        <translation type="obsolete">Enddatum</translation>
-    </message>
-    <message>
-        <source>Endtime</source>
-        <translation type="obsolete">Endzeit</translation>
-    </message>
-    <message>
-        <source>Hours</source>
-        <translation>Stunden</translation>
-    </message>
-    <message>
-        <source>Minutes</source>
-        <translation>Minuten</translation>
-    </message>
-    <message>
-        <source>Attendees</source>
-        <translation>Teilnehmer</translation>
-    </message>
-    <message>
-        <source>Please select more users here</source>
-        <translation>Bitte wählen Sie hier mehr Teilnehmer aus</translation>
-    </message>
-    <message>
-        <source>Refresh list</source>
-        <translation>Liste aktualisieren</translation>
-    </message>
-    <message>
         <source>You are editing a single date of the recurent event &quot;%1</source>
-        <translation>Sie bearbeiten ein einzelnes Datum des sich wiederholenden Termins &quot;%1&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>period from %1 to %2</source>
-        <translation>Zeitraum von %1 bis %2</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weekly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Monthly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yearly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attendees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please select more users here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh list</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>From</source>
-        <translation>Von</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>To</source>
-        <translation>Bis</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Datum</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Period ends on</source>
-        <translation>Zeitraum endet am</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>design/ezwebin/full/event_view_calendar</name>
     <message>
         <source>Mon</source>
-        <translation>Mo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation>Di</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation>Mi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation>Do</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>Fr</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation>Sa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sun</source>
-        <translation>So</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>Heute</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategorie</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>design/ezwebin/full/event_view_program</name>
     <message>
         <source>Past events</source>
-        <translation>Zurückliegende Termine</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Future events</source>
-        <translation>Zukünftige Termine</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>design/standard/class/datatype</name>
     <message>
         <source>Default value</source>
-        <translation>Standardwert</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Empty</source>
-        <translation>leer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Current datetime</source>
-        <translation>Aktuelle Zeit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Adjusted current datetime</source>
-        <translation>Korrigierte aktuelle Zeit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Current date and time adjusted by</source>
-        <translation>Aktuelle Zeit korrigiert um</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Year</source>
-        <translation>Jahr</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Month</source>
-        <translation>Monat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Day</source>
-        <translation>Tag</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Stunde</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minute</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>year(s)</source>
-        <translation>Jahr(e)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>month(s)</source>
-        <translation>Monat(e)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>day(s)</source>
-        <translation>Tag(e)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>hour(s)</source>
-        <translation>Stunde(n)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>minute(s)</source>
-        <translation>Minute(n)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>design/standard/content/datatype</name>
     <message>
         <source>Version: %old</source>
-        <translation>Version: %old</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Version: %new</source>
-        <translation>Version: %new</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -299,45 +279,40 @@
 <context>
     <name>ezevent/datatypes</name>
     <message>
-        <source>Event</source>
-        <comment>Datatype name</comment>
-        <translation type="obsolete">Termin</translation>
-    </message>
-    <message>
         <source>Date is not valid.</source>
-        <translation>Datum ist nicht korrekt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Time is not valid.</source>
-        <translation>Zeit ist nicht korrekt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Missing datetime input.</source>
-        <translation>Datumseingabe fehlt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Invalid start date.</source>
-        <translation>Ungültiges Startdatum.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Invalid end date.</source>
-        <translation>Ungültiges Enddatum.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>End time before start time.</source>
-        <translation>Die Endzeit liegt vor der Startzeit.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>End date before start date.</source>
-        <translation>Die Enddatum liegt vor der Startdatum.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Start time is not valid.</source>
-        <translation>Startzeit ist nicht korrekt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>End time is not valid.</source>
-        <translation>Endzeit ist nicht korrekt.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
