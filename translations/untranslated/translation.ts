@@ -1,4 +1,6 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>design/ezevent/content/datatype</name>
     <message>
@@ -312,6 +314,11 @@
     </message>
     <message>
         <source>End time is not valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Event</source>
+        <comment>Datatype name</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
