@@ -30,7 +30,7 @@ class ezeventInfo
         return array( 'Name'      => "eZ Publish Event",
                       'Version'   => "//autogentag//",
                       'Copyright' => "Copyright (C) 1999-2010 eZ Systems AS",
-                      'License'   => "//EZP_LICENSE//"
+                      'License'   => "GNU General Public License v2.0"
                     );
     }
 }
