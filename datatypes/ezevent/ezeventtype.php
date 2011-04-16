@@ -66,7 +66,7 @@ class eZEventType extends eZDataType
         $state = eZDateTimeValidator::validateDate( $day, $month, $year );
         if ( $state == eZInputValidator::STATE_INVALID )
         {
-            $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                  'Date is not valid.' ) );
             return false;
         }
@@ -74,13 +74,13 @@ class eZEventType extends eZDataType
         $state = eZDateTimeValidator::validateTime( $hour, $minute );
         if ( $state == eZInputValidator::STATE_INVALID )
         {
-            $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                  'Time is not valid.' ) );
             return false;
         }
         if ( !$state )
         {
-            $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                     'Missing datetime input.' ) );
         }
         return $state;
@@ -123,13 +123,13 @@ class eZEventType extends eZDataType
                 if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr(( 'ezevent/datatypes',
                                                                         'Invalid start date.' ) );
                 }
                 if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'Invalid end date.' ) );
                 }
                 $startDateTime = new eZDateTime();
@@ -140,7 +140,7 @@ class eZEventType extends eZDataType
                 if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'End time before start time.' ) );
                 }
 
@@ -156,7 +156,7 @@ class eZEventType extends eZDataType
                 if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'Invalid start date.' ) );
                 }
 
@@ -165,7 +165,7 @@ class eZEventType extends eZDataType
                     if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'Invalid end date.' ) );
                     }
 
@@ -176,7 +176,7 @@ class eZEventType extends eZDataType
                     if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'End date before start date.' ) );
                     }
                 }
@@ -190,7 +190,7 @@ class eZEventType extends eZDataType
                 if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, 0, 0, $contentObjectAttribute, false ) )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'Invalid start date.' ) );
                 }
 
@@ -198,20 +198,20 @@ class eZEventType extends eZDataType
                 if ( $state == eZInputValidator::STATE_INVALID )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'Start time is not valid.' ) );
                 }
                 $state = eZDateTimeValidator::validateTime( $hour, $minute );
                 if ( $state == eZInputValidator::STATE_INVALID )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'End time is not valid.' ) );
                 }
                 if ( $endHour*60+$endMinute < $hour*60+$minute )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'End time before start time.' ) );
                 }
                 if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
@@ -219,7 +219,7 @@ class eZEventType extends eZDataType
                     if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'Invalid end date.' ) );
                     }
 
@@ -230,7 +230,7 @@ class eZEventType extends eZDataType
                     if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'End date before start date.' ) );
                     }
                 }
@@ -239,7 +239,7 @@ class eZEventType extends eZDataType
                     if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'Invalid end date.' ) );
                     }
 
@@ -250,7 +250,7 @@ class eZEventType extends eZDataType
                     if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                     {
                         $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezi18n( 'ezevent/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'End date before start date.' ) );
                     }
                 }
