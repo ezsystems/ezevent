@@ -123,7 +123,7 @@ class eZEventType extends eZDataType
                 if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
                 {
                     $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr(( 'ezevent/datatypes',
+                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                         'Invalid start date.' ) );
                 }
                 if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
