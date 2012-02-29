@@ -36,6 +36,10 @@ $ViewList["subtree"] = array(
     "script"    => "subtree.php",
     'params'    => array( 'NodeID', 'Class', 'SearchOffset', 'SearchLimit', 'VarName' )
     );
+$ViewList["node"] = array(
+    "script" => "node.php",
+    'params' => array( 'NodeID' )
+    );
 
 $FunctionList            = array();
 $FunctionList['search']  = array();

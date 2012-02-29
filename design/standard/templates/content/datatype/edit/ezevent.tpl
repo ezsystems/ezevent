@@ -152,7 +152,7 @@
                     <li id="list_of_users_entry_{$user.contentobject_id}">
                             <input type="hidden" name="{$attribute_base}_event_attendees_{$attribute.id}[]" value="{$user.contentobject_id}">
                         {fetch( 'content', 'object', hash( 'object_id', $user.contentobject_id ) ).name|wash()}
-                        <a href="#" onclick="return ezevent_removeUserListEntry('list_of_users_entry_{$user.contentobject_id}')">       <img src={"remove.png"|ezimage} /></a>
+                        <a href="#" onclick="return ezevent_removeUserListEntry('list_of_users_entry_{$user.contentobject_id}')"><img src={"remove.png"|ezimage} /></a>
                     </li>
                 {/foreach}
                 </ul>
@@ -163,10 +163,10 @@
         <div id="ajaxsearchbox" class="tab-container">
             {'Please select more users here'|i18n( 'design/ezevent/content/datatype' )}
             <div class="block search-results">
-                <div id="ajaxinitsearchresult" style="overflow: hidden">
+                <div id="ajaxinitsearchresult" style="overflow: hidden"></div>
             </div>
             <br />
-            <a href="#" onclick="ezajaxSearchLink( {"ezajax/subtree/2/teamroom/0/0"|ezurl('single')}, 'ajaxsearchresult' );toggleSubElements( this, 'ajaxsearchresult' );return false;">Weitere Teamrooms</a>
+            <a href="#" onclick="ezajaxSearchLink( {"ezajax/subtree/2/teamroom/0/0"|ezurl('single')}, 'ajaxsearchresult' );toggleSubElements( this, 'ajaxsearchresult' );return false;">{"other teamrooms"|i18n('design/ezevent/content/datatype')}</a>
             <div class="block search-results">
                 <div id="ajaxsearchresult" style="overflow: hidden">
             </div>

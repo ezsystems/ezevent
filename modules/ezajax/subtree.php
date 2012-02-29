@@ -55,15 +55,15 @@ if ( $VarName )
 }
 
 
-$searchParams = array( 'Depth'            =>  0,
+$params = array( 'Depth'            =>  0,
                  'DepthOperator'    => 'eq',
                  'Limit'            => $SearchLimit,
                  'Offset'           => $SearchOffset,
                  'ClassFilterType'  => 'include',
                  'ClassFilterArray' => array( $ClassID ) );
 
-$children = eZContentObjectTreeNode::subTreeByNodeID( $searchParams, $NodeID  );
-$childrenCount = eZContentObjectTreeNode::subTreeCountByNodeID( $searchParams, $NodeID  );
+$children = eZContentObjectTreeNode::subTreeByNodeID( $params, $NodeID  );
+$childrenCount = eZContentObjectTreeNode::subTreeCountByNodeID( $params, $NodeID  );
 
 $r = '[]';
 $jsonObj = new JsonContent();
