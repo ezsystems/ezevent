@@ -3,6 +3,8 @@ function $( element )
     return document.getElementById( element );
 }
 
+var searchTeamroomLink = null;
+
 function ezevent_initWithMode( mode )
 {
     ezevent_seteditmode( mode );
@@ -148,6 +150,9 @@ function ezajaxSearchLinkBack( r )
    // In this case we trust the source, so we can use eval
    eval( 'ezajaxSearchObject = ' +  r.responseText );
    var search = ezajaxSearchObject.SearchResult, root = ezajaxSearchUrl.split('ezajax/search')[0], temp = '';
+
+
+    alert(ezajaxSearchObject.SearchResult);
 
    if ( !search.length )
    {
