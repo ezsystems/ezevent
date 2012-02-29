@@ -151,9 +151,6 @@ function ezajaxSearchLinkBack( r )
    eval( 'ezajaxSearchObject = ' +  r.responseText );
    var search = ezajaxSearchObject.SearchResult, root = ezajaxSearchUrl.split('ezajax/search')[0], temp = '';
 
-
-    alert(ezajaxSearchObject.SearchResult);
-
    if ( !search.length )
    {
         if ( lTarget.el )
