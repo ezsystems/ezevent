@@ -100,6 +100,7 @@ class eZEventType extends eZDataType
         $contentObjectAttributeId = $contentObjectAttribute->attribute( 'id' );
 
         $eventType   = $http->postVariable( $base . '_event_typeofevent_' . $contentObjectAttributeId );
+        $eventMode   = $http->postVariable( $base . '_event_eventmode_' . $contentObjectAttributeId );
 
         $year   = $http->postVariable( $base . '_event_year_' . $contentObjectAttributeId );
         $month  = $http->postVariable( $base . '_event_month_' . $contentObjectAttributeId );
@@ -116,148 +117,304 @@ class eZEventType extends eZDataType
         $endMinute = $http->postVariable( $base . '_eventend_minute_' . $contentObjectAttributeId .'end' );
 
         $errorOccured = false;
-        switch( $eventType )
+
+        if( $eventMode )
         {
-            case eZEvent::EVENTTYPE_NORMAL:
+            switch( $eventMode )
             {
-                if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
+                case eZEvent::EVENTMODE_NORMAL:
                 {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid start date.' ) );
-                }
-                if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid end date.' ) );
-                }
-                $startDateTime = new eZDateTime();
-                $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
-                $endDateTime = new eZDateTime();
-                $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
-
-                if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'End time before start time.' ) );
-                }
-
-                break;
-            }
-            case eZEvent::EVENTTYPE_FULL_DAY:
-            {
-                $hour = 0;
-                $minute = 0;
-                $endHour = 0;
-                $endMinute = 0;
-
-                if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid start date.' ) );
-                }
-
-                if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
-                {
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Invalid start date.' ) );
+                    }
                     if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                     {
                         $errorOccured = true;
                         $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'Invalid end date.' ) );
                     }
-
                     $startDateTime = new eZDateTime();
                     $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
                     $endDateTime = new eZDateTime();
                     $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+
                     if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                     {
                         $errorOccured = true;
                         $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                            'End date before start date.' ) );
+                                                                            'End time before start time.' ) );
                     }
-                }
 
-                break;
+                    break;
+                }
+                case eZEvent::EVENTMODE_FULL_DAY:
+                case eZEvent::EVENTTYPE_FULL_DAY:
+                {
+                    $hour = 0;
+                    $minute = 0;
+                    $endHour = 0;
+                    $endMinute = 0;
+
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Invalid start date.' ) );
+                    }
+
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+
+                    break;
+                }
             }
-            case eZEvent::EVENTTYPE_WEEKLY_REPEAT:
-            case eZEvent::EVENTTYPE_MONTHLY_REPEAT:
-            case eZEvent::EVENTTYPE_YEARLY_REPEAT:
-            {
-                if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, 0, 0, $contentObjectAttribute, false ) )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid start date.' ) );
-                }
 
-                $state = eZDateTimeValidator::validateTime( $hour, $minute );
-                if ( $state == eZInputValidator::STATE_INVALID )
+            switch ( $eventType)
+            {
+                case eZEvent::EVENTTYPE_WEEKLY_REPEAT:
+                case eZEvent::EVENTTYPE_MONTHLY_REPEAT:
+                case eZEvent::EVENTTYPE_YEARLY_REPEAT:
                 {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Start time is not valid.' ) );
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, 0, 0, $contentObjectAttribute, false ) )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Invalid start date.' ) );
+                    }
+
+                    $state = eZDateTimeValidator::validateTime( $hour, $minute );
+                    if ( $state == eZInputValidator::STATE_INVALID )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Start time is not valid.' ) );
+                    }
+                    if ( $eventType == eZEvent::EVENTTYPE_NORMAL )
+                    {
+                        $state = eZDateTimeValidator::validateTime( $hour, $minute );
+                        if ( $state == eZInputValidator::STATE_INVALID )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End time is not valid.' ) );
+                        }
+                        if ( $endHour*60+$endMinute < $hour*60+$minute )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End time before start time.' ) );
+                        }
+                    }
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, 0, 0, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, 0, 0, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+                    break;
                 }
-                $state = eZDateTimeValidator::validateTime( $hour, $minute );
-                if ( $state == eZInputValidator::STATE_INVALID )
+            }
+
+        }
+        else
+        {
+            switch( $eventType )
+            {
+                case eZEvent::EVENTTYPE_NORMAL:
                 {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'End time is not valid.' ) );
-                }
-                if ( $endHour*60+$endMinute < $hour*60+$minute )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'End time before start time.' ) );
-                }
-                if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
-                {
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Invalid start date.' ) );
+                    }
                     if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
                     {
                         $errorOccured = true;
                         $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
                                                                             'Invalid end date.' ) );
                     }
-
                     $startDateTime = new eZDateTime();
                     $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
                     $endDateTime = new eZDateTime();
                     $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+
                     if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
                     {
                         $errorOccured = true;
                         $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                            'End date before start date.' ) );
-                    }
-                }
-                if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
-                {
-                    if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
-                    {
-                        $errorOccured = true;
-                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                            'Invalid end date.' ) );
+                                                                            'End time before start time.' ) );
                     }
 
-                    $startDateTime = new eZDateTime();
-                    $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, 0, 0, 0 );
-                    $endDateTime = new eZDateTime();
-                    $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, 0, 0, 0 );
-                    if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                    break;
+                }
+                case eZEvent::EVENTTYPE_FULL_DAY:
+                {
+                    $hour = 0;
+                    $minute = 0;
+                    $endHour = 0;
+                    $endMinute = 0;
+
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
                     {
                         $errorOccured = true;
                         $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                            'End date before start date.' ) );
+                                                                            'Invalid start date.' ) );
                     }
+
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+
+                    break;
                 }
-                break;
+                case eZEvent::EVENTTYPE_WEEKLY_REPEAT:
+                case eZEvent::EVENTTYPE_MONTHLY_REPEAT:
+                case eZEvent::EVENTTYPE_YEARLY_REPEAT:
+                {
+                    if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, 0, 0, $contentObjectAttribute, false ) )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Invalid start date.' ) );
+                    }
+
+                    $state = eZDateTimeValidator::validateTime( $hour, $minute );
+                    if ( $state == eZInputValidator::STATE_INVALID )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'Start time is not valid.' ) );
+                    }
+                    $state = eZDateTimeValidator::validateTime( $hour, $minute );
+                    if ( $state == eZInputValidator::STATE_INVALID )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'End time is not valid.' ) );
+                    }
+                    if ( $endHour*60+$endMinute < $hour*60+$minute )
+                    {
+                        $errorOccured = true;
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                            'End time before start time.' ) );
+                    }
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+                    if  ( $endDay != '' && $endMonth != '' &&  $endYear != '' )
+                    {
+                        if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'Invalid end date.' ) );
+                        }
+
+                        $startDateTime = new eZDateTime();
+                        $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, 0, 0, 0 );
+                        $endDateTime = new eZDateTime();
+                        $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, 0, 0, 0 );
+                        if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
+                        {
+                            $errorOccured = true;
+                            $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
+                                                                                'End date before start date.' ) );
+                        }
+                    }
+                    break;
+                }
             }
         }
-
 
 
         if ( $errorOccured == true )
