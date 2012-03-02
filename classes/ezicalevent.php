@@ -116,6 +116,7 @@ class eZiICalEvent
             case eZEvent::EVENTTYPE_TO_BE_DEFINED:
             case eZEvent::EVENTTYPE_NO_TIME:
             case eZEvent::EVENTTYPE_FULL_DAY:
+            case eZEvent::EVENTTYPE_SIMPLE:
             case eZEvent::EVENTTYPE_YEARLY_REPEAT:
             {
                 $eventStartDate = date( eZiICalEvent::ICAL_DATE_FORMAT, $this->Event->attribute( 'current_start_date' ) );
@@ -160,6 +161,7 @@ class eZiICalEvent
         switch( $this->Event->attribute( 'event_type' ) )
         {
             case eZEvent::EVENTTYPE_FULL_DAY:
+            case eZEvent::EVENTTYPE_SIMPLE:
             case eZEvent::EVENTTYPE_NORMAL:
             case eZEvent::EVENTTYPE_WEEKLY_REPEAT:
             case eZEvent::EVENTTYPE_MONTHLY_REPEAT:
