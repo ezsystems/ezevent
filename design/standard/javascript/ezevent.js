@@ -8,15 +8,13 @@ var searchTeamroomLink = null;
 function ezevent_initWithMode( mode )
 {
     ezevent_seteditmode( mode );
-    ezajaxSearchLink( searchLink );
+    ezajaxSearchLink( searchTeamroomLink );
 }
 
 function ezevent_seteditmode( mode )
 {
-    labelList = new Array( 'startdate', 'starttime', 'enddate', 'endtime' );
-    ezevent_setLabelText( mode, labelList );
     // Set label texts
-    /*if ( mode == 11 || mode == 12 )
+    if ( mode == 11 || mode == 12 )
     {
         ezevent_setLabelText( 'startdate', 'Startdate' );
         ezevent_setLabelText( 'starttime', 'Starttime' );
@@ -29,7 +27,7 @@ function ezevent_seteditmode( mode )
         ezevent_setLabelText( 'starttime', 'From' );
         ezevent_setLabelText( 'enddate',   'Period till' );
         ezevent_setLabelText( 'endtime',   'To' );
-    }*/
+    }
 
     switch ( mode )
     {
@@ -68,18 +66,13 @@ function ezevent_seteditmode( mode )
 
 }
 
-function ezevent_setLabelText( mode, labelIDList )
-//function ezevent_setLabelText( labelID, content )
+
+function ezevent_setLabelText( labelID, content )
 {
-    for ( var i = 0; i < labelIDList.length; ++i )
+    var label = $( 'ezeventattribute_' + labelID + '_label' );
+    if ( label )
     {
-        var labelID = labelIDList[i],
-            label   = $( 'ezeventattribute_' + labelID + '_label' );
-        if ( label )
-        {
-            //label.innerHTML = content;
-            label.innerHTML = labelTextMap[mode][labelID];
-        }
+        label.innerHTML = content;
     }
 }
 
@@ -93,7 +86,8 @@ function ezevent_setDisplay( blockIDList, show )
 
 function ezevent_showHideBlock( blockID, show )
 {
-    var block = $( 'ezeventattribute_' + blockID );
+    //var block = $( 'ezeventattribute_' + blockID );
+    var block = document.getElementById('ezeventattribute_' + blockID);
     if ( block )
     {
         block.style.display =  ( show ) ? "block" : "none";
@@ -102,8 +96,8 @@ function ezevent_showHideBlock( blockID, show )
 
 function ezevent_moveBlockToCell( blockID, cellID )
 {
-    var block = $( 'ezeventattribute_' + blockID );
-    var cell  = $( 'ezeventattribute_table_cell_' + cellID );
+    var block = document.getElementById( 'ezeventattribute_' + blockID );
+    var cell  = document.getElementById( 'ezeventattribute_table_cell_' + cellID );
 
     if ( cell && block )
     {
@@ -122,12 +116,22 @@ function unixtimetodate( timestamp )
 var gLinkTarget = '';
 var gLinkinProgress = false;
 
+function toggleSubElements( element, subelemID )
+{
+    element.onclick = function(){ var subelem = document.getElementById( subelemID );
+                                  subelem.style.display = ( subelem.style.display == 'none' ) ? 'block' : 'none' ;
+                                  return false
+                                 } ;
+    return false;
+}
+
 function ezajaxSearchLink( url, lTarget )
 {
     if ( lTarget )
     {
         gLinkTarget = lTarget;
     }
+
     ezajaxObject.load( url, false, ezajaxSearchLinkBack );
     return false;
 }
@@ -140,7 +144,8 @@ function ezajaxSearchLinkBack( r )
     gLinkinProgress = true;
     if ( gLinkTarget != '' )
     {
-        lTarget = $( gLinkTarget );
+        //lTarget = $( gLinkTarget );
+        lTarget = document.getElementById(gLinkTarget);
         gLinkTarget = '';
     }
     else
@@ -164,16 +169,24 @@ function ezajaxSearchLinkBack( r )
    }
    else
    {
-       temp = '<ul>';
+       temp = '<ul id="available_users">';
        for (var i = 0, l = search.length; i < l; i++)
        {
             if ( search[i].class_identifier == 'user' )
             {
-                temp += '<li id="result_' +  search[i].node_id +'_li"><a href="#")|ezurl} onclick="return ezevent_addUserListEntry( ' +  search[i].id + ', \''+ search[i].name +'\' );">' + search[i].name + '<\/a><div  id="result_' +  search[i].node_id +'"></div><\/li>';
+                //var userList = $( 'list_of_users' );
+                var user = document.getElementById('list_of_users_entry_' + search[i].id);
+                if ( user )
+                {
+                    // user has been already added
+                    continue;
+                }
+
+                temp += '<li id="result_' +  search[i].id +'_li"><a href="#" onclick="return ezevent_addUserListEntry( \'' +  search[i].id + '\', \''+ search[i].name +'\' );">' + search[i].name + '<\/a><div  id="result_' +  search[i].id +'"></div><\/li>';
             }
             else
             {
-                temp += '<li><a href="' + baseURL + '/' + search[i].node_id + '/user")|ezurl} onclick="return ezajaxSearchLink( this.href, \'result_' +  search[i].node_id + '\' );">' + search[i].name + '<\/a><div  id="result_' +  search[i].node_id +'"></div><\/li>';
+                temp += '<li><a href="' + baseURL + '/' + search[i].node_id + '/user/0/30" onclick="ezajaxSearchLink( this.href, \'result_' +  search[i].node_id + '\' );toggleSubElements(this,\'result_' +  search[i].node_id + '\');return false;">' + search[i].name + '<\/a><div  id="result_' +  search[i].node_id +'"></div><\/li>';
             }
         }
         temp += '</ul>';
@@ -190,19 +203,26 @@ function ezajaxSearchLinkBack( r )
     gLinkinProgress = false;
 }
 
-
-
 function  ezevent_addUserListEntry( id, uname )
 {
-    var userList = $( 'list_of_users' )
+    //var userList = $( 'list_of_users' );
+    var user = document.getElementById( 'list_of_users_entry_' + id);
+    if ( user )
+    {
+        // user has been already added
+        return false;
+    }
+    //var userList = $( 'list_of_users' );
+    var userList = document.getElementById('list_of_users');
     if ( !userList )
     {
         return false;
     }
+
     temp  = '<li id="list_of_users_entry_' + id +'">';
     temp += '<input type="hidden" name="'+ selectID +'" value="' + id + '">';
     temp += uname;
-    temp += '<a href="#" onClick="return ezevent_removeUserListEntry(\'list_of_users_entry_'+ id +'\')"><img src="'+ removeIconSrc +'"></a>';
+    temp += '<a href="#" onClick="return ezevent_removeUserListEntry(\''+ id +'\', \'' + uname +'\' )"><img src="'+ removeIconSrc +'"></a>';
     temp += '</li>';
     if ( userList.el )
     {
@@ -212,12 +232,27 @@ function  ezevent_addUserListEntry( id, uname )
     {
         userList.innerHTML = userList.innerHTML + temp;
     }
+
+    var item = document.getElementById( 'result_' + id + '_li' );
+    if ( item )
+    {
+        var tmp = item.parentNode.removeChild( item );
+    }
     return false;
 }
 
-function  ezevent_removeUserListEntry( id )
+function  ezevent_removeUserListEntry( id, uname )
 {
-    var item = $( id )
+    var temp = '<li id="result_' +  id +'_li"><a href="#" onclick="return ezevent_addUserListEntry( ' +  id + ', \''+ uname +'\' );">' + uname + '<\/a><div  id="result_' +  id +'"></div><\/li>';
+    var itemul = document.getElementById("available_users");
+    if ( itemul )
+    {
+        itemul.innerHTML = itemul.innerHTML + temp;
+    }
+
+
+    //var item = $( id );
+    var item = document.getElementById( 'list_of_users_entry_' + id);
     if ( item )
     {
         var tmp = item.parentNode.removeChild( item );
