@@ -56,3 +56,44 @@ table.ezevent_structural_table td {
     margin-left: 2px;
     margin-bottom: -2px;
 }
+
+
+div#ezeventattribute div.ezeventattribute-left
+{
+    float: left;
+}
+div#ezeventattribute div.ezeventattribute-right
+{
+    float: right;
+    margin-right: 10px;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+div#ezeventattribute_selection ul li
+{
+    float: left;
+    list-style-image: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.ezeventattribute-left div.dateblock
+{
+    float: left;
+    padding: 0.4em 0 1em 0;
+}
+div.ezeventattribute-left div.datesubblock
+{
+    float: left;
+    padding: 0;
+}
+
+input#ezeventattribute_checkbox_has_enddate
+{
+    float: left;
+    margin: 0 0.5em 0 0;
+}
+
+
