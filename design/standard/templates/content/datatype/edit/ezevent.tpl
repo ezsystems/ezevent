@@ -113,13 +113,10 @@
 
                 <div class="float-break"></div>
 
-                <div id="ezeventattribute_label_enddate">
+                <div >
                     <input id="ezeventattribute_checkbox_has_enddate" onchange="ezevent_has_enddate(this.checked)" type="checkbox" value="1" name="{$attribute_base}_event_has_enddate_{$attribute.id}" {if $attribute.content.end.is_valid}checked="checked"{/if} />
-                    <label>{'Enddate'|i18n( 'design/ezteamroom/content/datatype' )}</label>
-                </div>
-                <div id="ezeventattribute_label_period_till">
-                    <input id="ezeventattribute_checkbox_has_enddate" onchange="ezevent_has_enddate(this.checked)" type="checkbox" value="1" name="{$attribute_base}_event_has_enddate_{$attribute.id}" {if $attribute.content.end.is_valid}checked="checked"{/if} />
-                    <label>{'Recur till'|i18n( 'design/ezteamroom/content/datatype' )}</label>
+                    <label id="ezeventattribute_label_enddate">{'Enddate'|i18n( 'design/ezteamroom/content/datatype' )}</label>
+                    <label id="ezeventattribute_label_period_till">{'Recur till'|i18n( 'design/ezteamroom/content/datatype' )}</label>
                 </div>
                 <div class="float-break"></div>
                 <div id="ezeventattribute_enddatetime" class="dateblock">
