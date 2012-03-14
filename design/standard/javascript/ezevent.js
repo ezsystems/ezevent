@@ -11,98 +11,63 @@ function ezevent_initWithMode( mode )
     ezajaxSearchLink( searchTeamroomLink );
 }
 
-function ezevent_seteditmode( mode )
-{
-    // Set label texts
-    if ( mode == 11 || mode == 12 )
-    {
-        ezevent_setLabelText( 'startdate', 'Startdate' );
-        ezevent_setLabelText( 'starttime', 'Starttime' );
-        ezevent_setLabelText( 'enddate',   'Enddate' );
-        ezevent_setLabelText( 'endtime',   'Endtime' );
-    }
-    if ( mode == 15 || mode == 16 || mode == 17 )
-    {
-        ezevent_setLabelText( 'startdate', 'Date' );
-        ezevent_setLabelText( 'starttime', 'From' );
-        ezevent_setLabelText( 'enddate',   'Period till' );
-        ezevent_setLabelText( 'endtime',   'To' );
-    }
 
-    switch ( mode )
+// switch full day / normal
+function ezevent_is_full_day( cchecked )
+{
+    ezevent_setDisplay( Array( 'starttime', 'endtime' ), ( cchecked )?  "none" : "inline" );
+}
+
+// show_enddate
+function ezevent_has_enddate( cchecked )
+{
+    ezevent_setDisplay( Array( 'enddatetime' ), ( cchecked )? "inline" : "none" );
+}
+
+function ezevent_setedittype( etype )
+{
+    switch ( etype )
     {
         case 11:
-            // Normal date
-            ezevent_setDisplay( Array( 'startdate', 'enddate','starttime', 'endtime'  ), true );
-            ezevent_setDisplay( Array( 'table_row_1', 'table_row_2'  ), true );
-            ezevent_setDisplay( Array( 'table_row_3', 'table_row_4', 'table_row_5'  ), false );
-            ezevent_moveBlockToCell( 'startdate', '11' );
-            ezevent_moveBlockToCell( 'starttime', '12' );
-            ezevent_moveBlockToCell( 'enddate',   '21' );
-            ezevent_moveBlockToCell( 'endtime',   '22' );
+            // Normal date ( or several days )
+            ezevent_setDisplay( Array( 'label_startdate', 'label_enddate' ), "inline" );
+            ezevent_setDisplay( Array( 'label_date_from', 'label_period_till' ), "none" );
             break;
-        case 12:
+/*        case 12:
+            moved to etype
             // full day
-            ezevent_setDisplay( Array( 'startdate', 'enddate'  ), true );
-            ezevent_setDisplay( Array( 'starttime', 'endtime'  ), false );
-            ezevent_setDisplay( Array( 'table_row_1', 'table_row_2'  ), true );
-            ezevent_setDisplay( Array( 'table_row_3', 'table_row_4', 'table_row_5'  ), false );
-            ezevent_moveBlockToCell( 'startdate', '11' );
-            ezevent_moveBlockToCell( 'enddate', '21' );
+            ezevent_setDisplay( Array( 'startdate', 'enddate'  ), "inline" );
+            ezevent_setDisplay( Array( 'starttime', 'endtime'  ), "none" );
+
+            ezevent_setDisplay( Array( 'label_startdate', 'label_enddate' ), "inline" );
+            ezevent_setDisplay( Array( 'label_date_from', 'label_period_till' ), "none" );
             break;
-        case 15:
-        case 16:
-        case 17:
-            // weekly
-            ezevent_setDisplay( Array( 'enddate','starttime', 'endtime'  ), true );
-            ezevent_setDisplay( Array( 'table_row_1', 'table_row_2'  ), false );
-            ezevent_setDisplay( Array( 'table_row_3', 'table_row_4', 'table_row_5'  ), true );
-            ezevent_moveBlockToCell( 'startdate', '31' );
-            ezevent_moveBlockToCell( 'starttime', '41' );
-            ezevent_moveBlockToCell( 'endtime', '42' );
-            ezevent_moveBlockToCell( 'enddate', '51' );
+*/
+        case 15:// weekly
+        case 16:// monthly
+        case 17:// yearly
+            ezevent_setDisplay( Array( 'label_startdate', 'label_enddate' ), "none" );
+            ezevent_setDisplay( Array( 'label_date_from', 'label_period_till' ), "inline" );
             break;
     }
 
 }
 
-
-function ezevent_setLabelText( labelID, content )
-{
-    var label = $( 'ezeventattribute_' + labelID + '_label' );
-    if ( label )
-    {
-        label.innerHTML = content;
-    }
-}
-
-function ezevent_setDisplay( blockIDList, show )
+function ezevent_setDisplay( blockIDList, display )
 {
     for (var i = 0; i < blockIDList.length; ++i)
     {
-        ezevent_showHideBlock( blockIDList[i], show );
+        ezevent_showHideBlock( blockIDList[i], display );
     }
 }
 
-function ezevent_showHideBlock( blockID, show )
+function ezevent_showHideBlock( blockID, display )
 {
     //var block = $( 'ezeventattribute_' + blockID );
     var block = document.getElementById('ezeventattribute_' + blockID);
     if ( block )
     {
-        block.style.display =  ( show ) ? "block" : "none";
-    }
-}
-
-function ezevent_moveBlockToCell( blockID, cellID )
-{
-    var block = document.getElementById( 'ezeventattribute_' + blockID );
-    var cell  = document.getElementById( 'ezeventattribute_table_cell_' + cellID );
-
-    if ( cell && block )
-    {
-        var tmp = block.parentNode.removeChild( block );
-        cell.appendChild( tmp );
+        block.style.display =  display;
     }
 }
 
