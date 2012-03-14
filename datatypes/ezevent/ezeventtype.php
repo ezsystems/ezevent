@@ -120,41 +120,15 @@ class eZEventType extends eZDataType
 
         switch( $eventType )
         {
-            case eZEvent::EVENTTYPE_NORMAL:
-/*            {
-                if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid start date.' ) );
-                }
-                if ( !$this->validateDateTimeHTTPInput( $endDay, $endMonth, $endYear, $endHour, $endMinute, $contentObjectAttribute, false  ) )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'Invalid end date.' ) );
-                }
-                $startDateTime = new eZDateTime();
-                $startDateTime->setMDYHMS( (int)$month, (int)$day, (int)$year, (int)$hour, (int)$minute, 0 );
-                $endDateTime = new eZDateTime();
-                $endDateTime->setMDYHMS( (int)$endMonth, (int)$endDay, (int)$endYear, (int)$endHour, (int)$endMinute, 0 );
-
-                if ( $endDateTime->timeStamp() < $startDateTime->timeStamp() )
-                {
-                    $errorOccured = true;
-                    $contentObjectAttribute->setValidationError( ezpI18n::tr( 'ezevent/datatypes',
-                                                                        'End time before start time.' ) );
-                }
-
-                break;
-            }*/
             case eZEvent::EVENTTYPE_FULL_DAY:
             {
                 $hour = 0;
                 $minute = 0;
                 $endHour = 0;
                 $endMinute = 0;
-
+            }
+            case eZEvent::EVENTTYPE_NORMAL:
+            {
                 if ( !$this->validateDateTimeHTTPInput( $day, $month, $year, $hour, $minute, $contentObjectAttribute, false ) )
                 {
                     $errorOccured = true;
