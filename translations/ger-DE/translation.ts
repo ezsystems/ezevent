@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="de_DE">
 <context>
     <name>design/ezevent/content/datatype</name>
     <message>
         <source>You are editing a single date of the recurent event &quot;%name&quot;&lt;br /&gt;(period from %start to %end)</source>
-        <translation type="obsolete">Sie bearbeiten einen Einzeltermin des wiederholenden Termins &quot;%name&quot;&lt;br /&gt;(Zeitraum von %start bis %end)</translation>
+        <translation>Sie bearbeiten ein einzelnes Datum des wiederkehrenden Termins &quot;%name&quot;&lt;br /&gt;(Zeitraum von %start bis %end)</translation>
     </message>
     <message>
         <source>Select type</source>
@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Normal</source>
-        <translation>Normal</translation>
+        <translation type="obsolete">Normal</translation>
     </message>
     <message>
         <source>Full Day</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Startdate</source>
-        <translation type="obsolete">Startdatum</translation>
+        <translation>Startdatum</translation>
     </message>
     <message>
         <source>Year</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Enddate</source>
-        <translation type="obsolete">Enddatum</translation>
+        <translation>Enddatum</translation>
     </message>
     <message>
         <source>Endtime</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Hours</source>
-        <translation>Stunden</translation>
+        <translation type="obsolete">Stunden</translation>
     </message>
     <message>
         <source>Minutes</source>
@@ -85,23 +85,23 @@
     </message>
     <message>
         <source>Refresh list</source>
-        <translation>Liste aktualisieren</translation>
+        <translation type="obsolete">Liste aktualisieren</translation>
     </message>
     <message>
         <source>You are editing a single date of the recurent event &quot;%1</source>
-        <translation>Sie bearbeiten ein einzelnes Datum des sich wiederholenden Termins &quot;%1&quot;</translation>
+        <translation type="obsolete">Sie bearbeiten ein einzelnes Datum des sich wiederholenden Termins &quot;%1&quot;</translation>
     </message>
     <message>
         <source>period from %1 to %2</source>
-        <translation>Zeitraum von %1 bis %2</translation>
+        <translation type="obsolete">Zeitraum von %1 bis %2</translation>
     </message>
     <message>
         <source>From</source>
-        <translation>Von</translation>
+        <translation type="obsolete">Von</translation>
     </message>
     <message>
         <source>To</source>
-        <translation>Bis</translation>
+        <translation type="obsolete">Bis</translation>
     </message>
     <message>
         <source>Date</source>
@@ -109,7 +109,27 @@
     </message>
     <message>
         <source>Period ends on</source>
-        <translation>Zeitraum endet am</translation>
+        <translation type="obsolete">Zeitraum endet am</translation>
+    </message>
+    <message>
+        <source>Recurrence</source>
+        <translation>Wiederholung</translation>
+    </message>
+    <message>
+        <source>Select recurrence</source>
+        <translation>Wiederholung auswählen</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <source>Recur till</source>
+        <translation>Wiederholen bis</translation>
+    </message>
+    <message>
+        <source>other teamrooms</source>
+        <translation>weitere Teamräume</translation>
     </message>
 </context>
 <context>
@@ -240,62 +260,65 @@
     <name>design/standard/content/edit</name>
     <message>
         <source>The currently published version is %version and was published at %time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die aktuelle Versionsnummer ist %version und wurde veröffentlicht am %time.</translation>
     </message>
     <message>
         <source>The last modification was done at %modified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die letzte Änderung wurde vorgenommen am %modified.</translation>
     </message>
     <message>
         <source>The object is owned by %owner.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Objekt gehört %owner.</translation>
     </message>
     <message>
         <source>This object is already being edited by yourself or someone else.
     You can either continue editing one of your drafts or you can create a new draft.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Objekt wird bereits durch Sie und jemand anderes bearbeitet.
+Sie können entweder die Bearbeitung an einem Ihrer Entwürfe fortsetzen oder einen neuen Entwurf anlegen.</translation>
     </message>
     <message>
         <source>This object is already being edited by you.
         You can either continue editing one of your drafts or you can create a new draft.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Objekt wird bereits durch Sie bearbeitet.
+Sie können entweder die Bearbeitung an einem Ihrer Entwürfe fortsetzen oder einen neuen Entwurf anlegen.</translation>
     </message>
     <message>
         <source>This object is already being edited by someone else.
         You should either contact the person about the draft or create a new draft for personal editing.</source>
-        <translation type="unfinished"></translation>
+        <translation>This object is already being edited by someone else.
+                You should either contact the person about their draft or create a new draft for your own use.</translation>
     </message>
     <message>
         <source>Current drafts</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Entwürfe</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigentümer</translation>
     </message>
     <message>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Angelegt am</translation>
     </message>
     <message>
         <source>Last modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Letzte Änderung</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <source>New draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuer Entwurf</translation>
     </message>
 </context>
 <context>
@@ -303,7 +326,7 @@
     <message>
         <source>Event</source>
         <comment>Datatype name</comment>
-        <translation type="unfinished">Termin</translation>
+        <translation>Termin</translation>
     </message>
     <message>
         <source>Date is not valid.</source>
