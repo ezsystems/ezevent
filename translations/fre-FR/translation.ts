@@ -5,11 +5,11 @@
     <name>design/ezevent/content/datatype</name>
     <message>
         <source>You are editing a single date of the recurent event &quot;%1</source>
-        <translation>Vous êetes en train d&apos;éditer une date unique de l&apos;événement récurrent &quot;%1</translation>
+        <translation type="obsolete">Vous êetes en train d&apos;éditer une date unique de l&apos;événement récurrent &quot;%1</translation>
     </message>
     <message>
         <source>period from %1 to %2</source>
-        <translation>période de %1 à %2</translation>
+        <translation type="obsolete">période de %1 à %2</translation>
     </message>
     <message>
         <source>Select type</source>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Normal</source>
-        <translation>Normal</translation>
+        <translation type="obsolete">Normal</translation>
     </message>
     <message>
         <source>Full Day</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Hours</source>
-        <translation>Heures</translation>
+        <translation type="obsolete">Heures</translation>
     </message>
     <message>
         <source>Minutes</source>
@@ -73,15 +73,15 @@
     </message>
     <message>
         <source>Refresh list</source>
-        <translation>Rafraichir la liste</translation>
+        <translation type="obsolete">Rafraichir la liste</translation>
     </message>
     <message>
         <source>From</source>
-        <translation>De</translation>
+        <translation type="obsolete">De</translation>
     </message>
     <message>
         <source>To</source>
-        <translation>à</translation>
+        <translation type="obsolete">à</translation>
     </message>
     <message>
         <source>Date</source>
@@ -89,7 +89,39 @@
     </message>
     <message>
         <source>Period ends on</source>
-        <translation>La période se termine le</translation>
+        <translation type="obsolete">La période se termine le</translation>
+    </message>
+    <message>
+        <source>You are editing a single date of the recurent event &quot;%name&quot;&lt;br /&gt;(period from %start to %end)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recurrence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select recurrence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Startdate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enddate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recur till</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>other teamrooms</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
