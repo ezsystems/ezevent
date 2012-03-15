@@ -3,9 +3,9 @@
 // Created on: <2008-07-16 12:41:28 dis>
 //
 // SOFTWARE NAME: eZ Event extension for eZ Publish
-// SOFTWARE RELEASE: 1.x
-// COPYRIGHT NOTICE: Copyright (C) 1999-2012 eZ Systems AS
-// SOFTWARE LICENSE: GNU General Public License v2.0
+// SOFTWARE RELEASE: 1.3.0
+// COPYRIGHT NOTICE: Copyright (C) 1999-2011 eZ Systems AS
+// SOFTWARE LICENSE: eZ Business Use License Agreement Version 2.0
 // NOTICE: >
 //   This program is free software; you can redistribute it and/or
 //   modify it under the terms of version 2.0  of the GNU General
@@ -28,8 +28,8 @@ class ezeventInfo
     static function info()
     {
         return array( 'Name'      => "eZ Publish Event",
-                      'Version'   => "//autogentag//",
-                      'Copyright' => "Copyright (C) 1999-2012 eZ Systems AS",
+                      'Version'   => "1.4.0",
+                      'Copyright' => "Copyright (C) 1999-2011 eZ Systems AS",
                       'License'   => "GNU General Public License v2.0"
                     );
     }
