@@ -28,7 +28,7 @@ class ezeventInfo
     static function info()
     {
         return array( 'Name'      => "eZ Publish Event",
-                      'Version'   => "1.4.0",
+                      'Version'   => "//autogentag//",
                       'Copyright' => "Copyright (C) 1999-2011 eZ Systems AS",
                       'License'   => "GNU General Public License v2.0"
                     );
