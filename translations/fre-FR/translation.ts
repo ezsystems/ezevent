@@ -93,35 +93,35 @@
     </message>
     <message>
         <source>You are editing a single date of the recurent event &quot;%name&quot;&lt;br /&gt;(period from %start to %end)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous êtes en train d&apos;éditer une date unique de l&apos;événement récurrent &quot;%name&quot;&lt;br /&gt;(période de %start à %end)</translation>
     </message>
     <message>
         <source>Recurrence</source>
-        <translation type="unfinished"></translation>
+        <translation>Récurrence</translation>
     </message>
     <message>
         <source>Select recurrence</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner la récurrence</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun</translation>
     </message>
     <message>
         <source>Startdate</source>
-        <translation type="unfinished"></translation>
+        <translation>Date de début</translation>
     </message>
     <message>
         <source>Enddate</source>
-        <translation type="unfinished"></translation>
+        <translation>Date de fin</translation>
     </message>
     <message>
         <source>Recur till</source>
-        <translation type="unfinished"></translation>
+        <translation>Répéter jusqu&apos;à</translation>
     </message>
     <message>
         <source>other teamrooms</source>
-        <translation type="unfinished"></translation>
+        <translation>autres espaces projet</translation>
     </message>
 </context>
 <context>
