@@ -505,7 +505,7 @@ class eZEvent extends eZPersistentObject
 
                 $row['start_date'] = self::calculateNextDate( $before = $origDate, $row['event_type'], $counter++ );
             } while ( ( $row['start_date'] < $endDate ) &&
-                      ( $row['start_date'] < $row['end_date'] ) &&
+                      ( $row['end_date'] == 0 || ( $row['start_date'] < $row['end_date'] ) ) &&
                       ( $row['start_date'] != $before ) );
         }
 
