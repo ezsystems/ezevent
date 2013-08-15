@@ -105,10 +105,4 @@ class updateEventsType extends eZWorkflowEventType
     }
 }
 
-// Register workflow in main engine
-eZWorkflowEventType::registerEventType( 
-    updateEventsType::EZ_WORKFLOW_TYPE_UPDATEEVENTS, 
-    'updateEventsType'
-);
-
 ?>
