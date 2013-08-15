@@ -1,7 +1,6 @@
 <?php /*
 
 [EventSettings]
-ExtensionDirectories[]=ezevent
-AvailableEventTypes[]=event_updateevents
+AvailableEventTypes[event_updateevents]=updateEventsType
 
 */ ?>

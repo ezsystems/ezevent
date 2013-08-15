@@ -1017,6 +1017,4 @@ class eZEventType extends eZDataType
 
 }
 
-eZDataType::register( eZEventType::DATA_TYPE_STRING, "eZEventType" );
-
 ?>
